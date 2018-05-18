@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/login_with_google"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/button_facebook">
+
+
+        <!--<com.facebook.login.widget.LoginButton-->
+            <!--android:id="@+id/login_button"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_marginTop="30dp"-->
+            <!--android:layout_marginBottom="30dp" />-->
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/btn_facebook"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY">
+
+        </ImageButton>
+            <!--android:src="@drawable/com_facebook_button_icon_white" />-->
+
+        <Button
+            android:id="@+id/btn_login_with_facebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="Continue with Facebook"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</LinearLayout>
