@@ -11,6 +11,8 @@ import com.example.admin.myassignment.R;
 import com.example.admin.myassignment.model.UserDataModel;
 import com.example.admin.myassignment.presenter.FetchUserContract;
 import com.example.admin.myassignment.presenter.FetchUserPresenter;
+import com.example.admin.myassignment.utilities.FirebaseConstants;
+import com.example.admin.myassignment.utilities.UserPreferencesUtility;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 
@@ -52,14 +54,20 @@ public class ShowUserProfileActivity extends AppCompatActivity implements FetchU
         findViewById(R.id.btn_logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                UserPreferencesUtility.getInstance(ShowUserProfileActivity.this).setLoginUserData(false);
+                LoginActivity.start(ShowUserProfileActivity.this);
+                ShowUserProfileActivity.this.finish();
             }
         });
+
+        fetchUserPresenter.getUserByEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
     }
 
     @Override
     public void onUserFetched(UserDataModel userDataModel) {
-
+        tvName.setText(userDataModel.getUserName());
+        tvEmail.setText(userDataModel.getUserEmail());
+        tvContact.setText(userDataModel.getContactNumber());
     }
 
     @Override

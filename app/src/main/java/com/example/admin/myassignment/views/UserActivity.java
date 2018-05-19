@@ -48,6 +48,7 @@ public class UserActivity extends AppCompatActivity implements UserUpdateProfile
             @Override
             public void onClick(View v) {
                 userUpdateProfilePresenter.updateUserDetails(etName.getText().toString(),etContact.getText().toString());
+                ShowUserProfileActivity.start(UserActivity.this);
             }
         });
     }

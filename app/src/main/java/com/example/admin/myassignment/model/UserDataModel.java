@@ -36,11 +36,9 @@ public class UserDataModel  implements Serializable {
         }
         this.userName = snapshot.child(FirebaseConstants.User.USER_NAME).getValue().toString();
         this.contactNumber = snapshot.child(FirebaseConstants.User.CONTACT_NUMBER).getValue().toString();
-
     }
 
     public UserDataModel(HashMap<String, Object> snapshot) {
-
         this.userId = snapshot.get(FirebaseConstants.User.USER_ID).toString();
         this.userEmail = snapshot.get(FirebaseConstants.User.USER_EMAIL).toString();
         this.userName = snapshot.get(FirebaseConstants.User.USER_NAME).toString();
@@ -50,15 +48,12 @@ public class UserDataModel  implements Serializable {
     public String getUserId() {
         return userId;
     }
-
     public String getUserEmail() {
         return userEmail;
     }
-
     public String getUserName() {
         return userName;
     }
-
     public String getContactNumber() {
         return contactNumber;
     }
@@ -72,7 +67,6 @@ public class UserDataModel  implements Serializable {
       result.put(FirebaseConstants.User.CONTACT_NUMBER, contactNumber);
         return result;
     }
-
 
     @Exclude
     @Override

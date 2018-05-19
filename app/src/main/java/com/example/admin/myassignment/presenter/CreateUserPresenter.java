@@ -9,7 +9,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.StorageReference;
 
-
 public class CreateUserPresenter extends CreateUserContract.Presenter {
 
     private CreateUserContract.View view;
@@ -22,19 +21,15 @@ public class CreateUserPresenter extends CreateUserContract.Presenter {
 
     @Override
     public void attachStorageReference(StorageReference storageReference) {
-
     }
 
     @Override
     public void attachFirebaseAuth(FirebaseAuth firebaseAuth) {
     }
 
-
     @Override
     public void storeUser(UserDataModel userDataModel) {
-        {// save actual data or rock in rock table
-
-            Log.e(BasePresenter.LOG_TAG, "storeUser: " + userDataModel.toString());
+        {Log.e(BasePresenter.LOG_TAG, "storeUser: " + userDataModel.toString());
             DatabaseReference finalRef = FirebaseDatabase
                     .getInstance()
                     .getReference(FirebaseConstants.User.TABLE_NAME).child(userDataModel.getUserId());

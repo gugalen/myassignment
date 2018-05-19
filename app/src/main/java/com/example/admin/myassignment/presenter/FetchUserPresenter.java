@@ -12,11 +12,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 
-
-
 public class FetchUserPresenter extends FetchUserContract.Presenter {
     private static final String TAG = "FetchUserPresenter";
-
     private FetchUserContract.View view;
     private FirebaseAuth firebaseAuth;
 
@@ -27,7 +24,6 @@ public class FetchUserPresenter extends FetchUserContract.Presenter {
 
     @Override
     public void attachStorageReference(StorageReference storageReference) {
-
     }
 
     @Override
@@ -37,11 +33,9 @@ public class FetchUserPresenter extends FetchUserContract.Presenter {
 
     @Override
     public void getUserByEmail(final String email) {
-
         Query query = FirebaseDatabase.getInstance().getReference(FirebaseConstants.User.TABLE_NAME)
                 .orderByChild(FirebaseConstants.User.USER_EMAIL)
                 .equalTo(email);
-
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -55,7 +49,6 @@ public class FetchUserPresenter extends FetchUserContract.Presenter {
                 if(dataSnapshot.getValue() == null) {
                     view.onError("Data snapshot empty");
                 }
-
             }
 
             @Override
@@ -63,12 +56,9 @@ public class FetchUserPresenter extends FetchUserContract.Presenter {
                 Log.e(TAG, "iterating Rock onCancelled :" + databaseError.getDetails());
             }
         });
-
     }
 
     @Override
     public void getUserByFacebookId(String facebookId) {
-
     }
-
 }

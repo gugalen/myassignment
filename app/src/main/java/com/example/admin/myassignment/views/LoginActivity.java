@@ -2,6 +2,7 @@ package com.example.admin.myassignment.views;
 
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import com.example.admin.myassignment.presenter.CreateUserContract;
 import com.example.admin.myassignment.presenter.CreateUserPresenter;
 import com.example.admin.myassignment.presenter.FetchUserContract;
 import com.example.admin.myassignment.presenter.FetchUserPresenter;
+import com.example.admin.myassignment.utilities.UserPreferencesUtility;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -64,11 +66,22 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
 
     }
 
+    public static void start(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initPresenter();
+
+//        if(UserPreferencesUtility.getInstance(LoginActivity.this).isUserLoggedIn() ==true) {
+//            ShowUserProfileActivity.start(LoginActivity.this);
+//            LoginActivity.this.finish();
+//        }
 
         btnGoogleSignIn = findViewById(R.id.login_with_google);
 
@@ -286,6 +299,7 @@ public class LoginActivity extends AppCompatActivity implements  GoogleApiClient
             } else {
                 Log.e(TAG, "onUserFetched: google login");
                 addGoogleSignInUserTable(user.getUid());
+                UserPreferencesUtility.getInstance(LoginActivity.this).setLoginUserData(true);
             }
             updateUI(user);
         } else {
