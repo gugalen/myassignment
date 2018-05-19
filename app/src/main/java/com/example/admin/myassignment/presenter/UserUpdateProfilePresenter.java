@@ -39,11 +39,9 @@ public class UserUpdateProfilePresenter extends UserUpdateProfileContract.Presen
         Query query = FirebaseDatabase.getInstance().getReference(FirebaseConstants.User.TABLE_NAME)
                 .orderByChild(FirebaseConstants.User.USER_EMAIL)
                 .equalTo(currentUser.getEmail());
-
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     snapshot.getRef().child(FirebaseConstants.User.USER_NAME).setValue(name);
                     snapshot.getRef().child(FirebaseConstants.User.CONTACT_NUMBER).setValue(contact);
@@ -52,12 +50,10 @@ public class UserUpdateProfilePresenter extends UserUpdateProfileContract.Presen
                 view.dismissLoadingView();
                 view.onUserUpdateProfile();
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.e(LOG_TAG, "updateUserTableData onCancelled :" + databaseError.getDetails());
             }
         });
     }
-
 }

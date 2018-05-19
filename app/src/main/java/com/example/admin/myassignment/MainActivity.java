@@ -35,10 +35,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if(UserPreferencesUtility.getInstance(MainActivity.this).isUserLoggedIn() ==true) {
             ShowUserProfileActivity.start(MainActivity.this);
-
         } else {
             LoginActivity.start(MainActivity.this);
         }

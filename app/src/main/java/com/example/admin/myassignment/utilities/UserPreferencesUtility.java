@@ -2,9 +2,7 @@ package com.example.admin.myassignment.utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import com.pixplicity.easyprefs.library.Prefs;
-
 
 public class UserPreferencesUtility {
 
@@ -24,11 +22,9 @@ public class UserPreferencesUtility {
     }
 
     public void saveData(String key,String value) {
-
     }
 
     public void setLoginUserData(boolean  isUserLogggedIn) {
-
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
         prefsEditor .putBoolean(IS_USER_LOGGED_IN, isUserLogggedIn);
         prefsEditor.commit();
@@ -38,6 +34,5 @@ public class UserPreferencesUtility {
             return sharedPreferences.getBoolean(IS_USER_LOGGED_IN,false);
         }
         return false;
-
     }
 }
