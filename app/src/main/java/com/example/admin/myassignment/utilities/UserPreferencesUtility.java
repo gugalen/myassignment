@@ -21,10 +21,7 @@ public class UserPreferencesUtility {
         sharedPreferences = context.getSharedPreferences("UserPreferencesUtility",Context.MODE_PRIVATE);
     }
 
-    public void saveData(String key,String value) {
-    }
-
-    public void setLoginUserData(boolean  isUserLogggedIn) {
+    public void setLoginUserData(boolean isUserLogggedIn) {
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
         prefsEditor .putBoolean(IS_USER_LOGGED_IN, isUserLogggedIn);
         prefsEditor.commit();
